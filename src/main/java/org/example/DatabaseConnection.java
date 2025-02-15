@@ -1,5 +1,8 @@
+package org.example;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,6 +22,7 @@ public class DatabaseConnection {
 
     public Connection getConnection() throws SQLException {
         try {
+	    System.out.println(dbUrl+" "+dbUsername);
             // Class.forName("org.postgresql.Driver");  // Optional: Explicitly load the driver (usually not needed)
             return DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
         } catch (SQLException e) {
