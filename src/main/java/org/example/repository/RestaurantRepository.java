@@ -24,5 +24,7 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>
     // 4. Find restaurants with names containing a specific string (case-insensitive) OR located in a specific city
     @Query("SELECT r FROM Restaurant r WHERE LOWER(r.restaurantName) LIKE LOWER(CONCAT('%', :keyword, '%')) OR r.city = :city")
     List<Restaurant> searchRestaurants(@Param("keyword") String keyword, @Param("city") String city);
+
+    Restaurant findByRestaurantId(int restaurantId);
 }
 
