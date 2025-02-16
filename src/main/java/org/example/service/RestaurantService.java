@@ -34,7 +34,7 @@ public class RestaurantService {
     public Restaurant updateRestaurant(int id, Restaurant restaurant) {
         Optional<Restaurant> existingRestaurant = restaurantRepository.findById(id);
         if (existingRestaurant.isPresent()) {
-            restaurant.setRestaurant_id(id); // Important: Set the ID!
+            restaurant.setRestaurantId(id); // Important: Set the ID!
             return restaurantRepository.save(restaurant);
         } else {
             // Handle the case where the restaurant doesn't exist (e.g., throw an exception)
@@ -58,10 +58,10 @@ public class RestaurantService {
 
     // Example of a more complex business logic operation
     public Restaurant createOrUpdateRestaurant(Restaurant restaurant) {
-        if (restaurant.getRestaurant_id() == 0) { // Check if it's a new restaurant
+        if (restaurant.getRestaurantId() == 0) { // Check if it's a new restaurant
             return createRestaurant(restaurant);
         } else {
-            return updateRestaurant(restaurant.getRestaurant_id(), restaurant);
+            return updateRestaurant(restaurant.getRestaurantId(), restaurant);
         }
     }
 

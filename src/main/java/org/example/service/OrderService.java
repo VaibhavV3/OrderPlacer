@@ -42,8 +42,8 @@ public class OrderService {
         if (existingOrder.isPresent()) {
             Order updatedOrder = existingOrder.get();
             // Update only the provided fields (partial update)
-            if (order.getUser() != null) {
-                updatedOrder.setUser(order.getUser());
+            if (order.getUserName() != null) {
+                updatedOrder.setUserName(order.getUserName());
             }
             if (order.getRestaurant() != null) {
                 updatedOrder.setRestaurant(order.getRestaurant());
@@ -72,7 +72,7 @@ public class OrderService {
     }
 
     public List<Order> getOrdersByUser(String user) {
-        return orderRepository.findByUser(user);
+        return orderRepository.findByUserName(user);
     }
 
     public List<Order> getOrdersByRestaurant(int restaurantId) {

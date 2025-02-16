@@ -9,7 +9,8 @@ public class Restaurant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-incrementing primary key
-    private int restaurant_id;
+    @Column(name = "restaurant_id")
+    private int restaurantId;
 
     @Column(name = "restaurant_name", nullable = false) // Optional: Specify column name and constraints
     private String restaurantName;
@@ -67,12 +68,12 @@ public class Restaurant {
 
 
     // Getters and setters for all fields (Important!)
-    public int getRestaurant_id() {
-        return restaurant_id;
+    public int getRestaurantId() {
+        return restaurantId;
     }
 
-    public void setRestaurant_id(int restaurant_id) {
-        this.restaurant_id = restaurant_id;
+    public void setRestaurantId(int restaurantId) {
+        this.restaurantId = restaurantId;
     }
 
     public String getRestaurantName() {
@@ -186,7 +187,7 @@ public class Restaurant {
     @Override
     public String toString() {
         return "Restaurant{" +
-                "restaurant_id=" + restaurant_id +
+                "restaurantId=" + restaurantId +
                 ", restaurantName='" + restaurantName + '\'' +
                 // ... other fields
                 '}';

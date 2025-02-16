@@ -14,7 +14,8 @@ public class Order {
     @Column(name = "order_id")
     private Integer orderId;
 
-    private String user;
+    @Column(name = "user_name")
+    private String userName;
 
     @ManyToOne
     @JoinColumn(name = "restaurant_id", nullable = false)
@@ -60,12 +61,12 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public String getUser() {
-        return user;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public Restaurant getRestaurant() {

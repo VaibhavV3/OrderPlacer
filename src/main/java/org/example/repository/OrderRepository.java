@@ -16,7 +16,7 @@ import org.example.entity.Restaurant;
 public interface OrderRepository extends JpaRepository<Order, Integer> {
 
     // Find orders by user
-    List<Order> findByUser(String user);
+    List<Order> findByUserName(String userName);
 
     // Find orders by restaurant
     List<Order> findByRestaurant(Restaurant restaurant);
@@ -25,14 +25,14 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
     List<Order> findByOrderStatus(Order.OrderStatus orderStatus);
 
     // Find orders by user and status
-    List<Order> findByUserAndOrderStatus(String user, Order.OrderStatus orderStatus);
+    List<Order> findByUserNameAndOrderStatus(String user, Order.OrderStatus orderStatus);
 
     // Find orders by restaurant and status
     List<Order> findByRestaurantAndOrderStatus(Restaurant restaurant, Order.OrderStatus orderStatus);
 
 
     // Find orders by restaurant and status
-    List<Order> findByRestaurantAndUser(Restaurant restaurant, String user);
+    List<Order> findByRestaurantAndUserName(Restaurant restaurant, String userName);
 
     //Find order by order id
     Optional<Order> findByOrderId(int orderId);

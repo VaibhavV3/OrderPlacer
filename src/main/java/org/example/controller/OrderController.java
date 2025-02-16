@@ -49,9 +49,9 @@ public class OrderController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/user/{userId}")
-    public ResponseEntity<List<Order>> getOrdersByUser(@PathVariable int userId) {
-        List<Order> orders = orderService.getOrdersByUser(userId);
+    @GetMapping("/user/{user}")
+    public ResponseEntity<List<Order>> getOrdersByUser(@PathVariable String user) {
+        List<Order> orders = orderService.getOrdersByUser(user);
         return ResponseEntity.ok(orders);
     }
 
