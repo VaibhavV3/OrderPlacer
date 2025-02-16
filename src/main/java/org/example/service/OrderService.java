@@ -7,12 +7,18 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+import org.example.repository.OrderRepository;
+import org.example.repository.RestaurantRepository;
+
 @Service
 @Transactional // Important for data consistency
 public class OrderService {
 
     @Autowired
     private OrderRepository orderRepository;
+
+    @Autowired
+    private RestaurantRepository restaurantRepository;
 
     public List<Order> getAllOrders() {
         return orderRepository.findAll();
