@@ -99,14 +99,6 @@ public class Order {
         this.orderStatus = orderStatus;
     }
 
-    public String getDeliveryAddress() {
-        return deliveryAddress;
-    }
-
-    public void setDeliveryAddress(String deliveryAddress) {
-        this.deliveryAddress = deliveryAddress;
-    }
-
     public List<OrderItem> getOrderItems() {
         return orderItems;
     }
