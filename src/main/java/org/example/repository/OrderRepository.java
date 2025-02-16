@@ -7,9 +7,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.time.LocalDateTime;
 
-import org.example.Order;
-import org.example.Restaurant;
+import org.example.entity.Order;
+import org.example.entity.Restaurant;
 
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Integer> {
