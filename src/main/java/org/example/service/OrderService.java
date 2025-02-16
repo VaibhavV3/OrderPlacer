@@ -9,6 +9,7 @@ import java.util.Optional;
 
 import org.example.repository.OrderRepository;
 import org.example.repository.RestaurantRepository;
+import org.example.entity.Order;
 
 @Service
 @Transactional // Important for data consistency
