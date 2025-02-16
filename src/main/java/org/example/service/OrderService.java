@@ -48,9 +48,6 @@ public class OrderService {
             if (order.getRestaurant() != null) {
                 updatedOrder.setRestaurant(order.getRestaurant());
             }
-            if (order.getDeliveryAddress() != null) {
-                updatedOrder.setDeliveryAddress(order.getDeliveryAddress());
-            }
             if (order.getOrderStatus() != null) {
                 updatedOrder.setOrderStatus(order.getOrderStatus());
             }
