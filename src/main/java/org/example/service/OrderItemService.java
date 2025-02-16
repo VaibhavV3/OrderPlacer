@@ -3,6 +3,9 @@ package org.example.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.example.repository.OrderRepository;
+import org.example.repository.OrderItemRepository;
+
 @Service
 @Transactional
 public class OrderItemService {
