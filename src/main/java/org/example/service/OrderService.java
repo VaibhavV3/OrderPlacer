@@ -10,6 +10,8 @@ import java.util.Optional;
 import org.example.repository.OrderRepository;
 import org.example.repository.RestaurantRepository;
 import org.example.entity.Order;
+import org.example.entity.OrderItem;
+import org.example.entity.Restaurant;
 
 @Service
 @Transactional // Important for data consistency
@@ -72,7 +74,7 @@ public class OrderService {
         orderRepository.deleteById(orderId);
     }
 
-    public List<Order> getOrdersByUser(String userId) {
+    public List<Order> getOrdersByUser(String user) {
         return orderRepository.findByUser(user);
     }
 
