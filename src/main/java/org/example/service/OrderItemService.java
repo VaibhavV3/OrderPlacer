@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import org.example.entity.OrderItem;
+import org.example.entity.Order;
 
 @Service
 @Transactional
