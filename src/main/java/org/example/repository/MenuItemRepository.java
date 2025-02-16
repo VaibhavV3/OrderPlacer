@@ -75,6 +75,5 @@ public interface MenuItemRepository extends JpaRepository<MenuItem, Integer> {
     List<MenuItem> findAllByOrderByUpdatedAtDesc();
 
 
-
 }
 

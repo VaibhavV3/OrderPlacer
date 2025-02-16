@@ -10,6 +10,9 @@ import org.example.entity.MenuItem;
 
 
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.Optional;
 
 @Service
@@ -80,6 +83,18 @@ public class MenuItemService {
 
     public List<MenuItem> createMenuItemsInBulk(List<MenuItem> menuItems) {
         return menuItemRepository.saveAll(menuItems); // Use saveAll for bulk insert
+    }
+
+    public Map<String, List<MenuItem>> getMenuItemsGroupedByCategory(int restaurantId) {
+        List<MenuItem> menuItems = menuItemRepository.findByRestaurantId(restaurantId);
+        Map<String, List<MenuItem>> groupedMenuItems = new HashMap<>();
+
+        for (MenuItem menuItem : menuItems) {
+            String category = menuItem.getCategory();
+            groupedMenuItems.computeIfAbsent(category, k -> new ArrayList<>()).add(menuItem);
+        }
+
+        return groupedMenuItems;
     }
 
     // ... other service methods as needed ...

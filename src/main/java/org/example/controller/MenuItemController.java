@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,8 @@ import org.example.service.MenuItemService;
 
 
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 @RestController
 @RequestMapping("/api/restaurants/{restaurantId}/menu") // Base path for menu items
@@ -70,6 +73,24 @@ public class MenuItemController {
         }
         List<MenuItem> createdMenuItems = menuItemService.createMenuItemsInBulk(menuItems);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdMenuItems);
+    }
+
+    @GetMapping("/grouped")
+    public ResponseEntity<String> getMenuItemsGroupedByCategory(@PathVariable int restaurantId) {
+        Map<String, List<MenuItem>> groupedMenuItems = menuItemService.getMenuItemsGroupedByCategory(restaurantId);
+
+        JSONObject jsonResult = new JSONObject(); // Create a JSON object
+
+        for (Map.Entry<String, List<MenuItem>> entry : groupedMenuItems.entrySet()) {
+            String category = entry.getKey();
+            List<MenuItem> menuItems = entry.getValue();
+
+            // Convert List<MenuItem> to JSON array (if needed)
+
+            jsonResult.put(category, menuItems); // Add to the JSON object
+        }
+
+        return new ResponseEntity<>(jsonResult.toString(), HttpStatus.OK); // Return as String
     }
 
     // ... other endpoints as needed
