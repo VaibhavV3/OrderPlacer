@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+import org.example.entity.OrderItem;
+import org.example.service.OrderItemService;
+
 @RestController
 @RequestMapping("/api/order-items")
 public class OrderItemController {
