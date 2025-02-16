@@ -26,8 +26,9 @@ public class Order {
     @Column(name = "total_amount", precision = 10, scale = 2)
     private BigDecimal totalAmount;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "order_status")
-    private String orderStatus = OrderStatus.Processing;
+    private OrderStatus orderStatus = OrderStatus.Processing;
   
     public enum OrderStatus {
         Processing,
