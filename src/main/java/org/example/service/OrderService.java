@@ -32,8 +32,22 @@ public class OrderService {
     }
 
     public Order createOrder(Order order) {
-        // Any pre-processing logic before saving, e.g., setting default status, calculating total
+        // 1. Set the order date (if not already set by the client)
+        if (order.getOrderDate() == null) {
+            order.setOrderDate(LocalDateTime.now());
+        }
+
+        // 2. Associate OrderItems with the Order (CRUCIAL!)
+        if (order.getOrderItems() != null) {
+            for (OrderItem orderItem : order.getOrderItems()) {
+                orderItem.setOrder(order); // Set the order for each item
+            }
+        }
+
+        // 3. Calculate the total amount
         order.setTotalAmount(order.calculateTotalAmount()); // Calculate before saving
+
+        // 4. Save the Order (this will cascade to OrderItems because of CascadeType.ALL)
         return orderRepository.save(order);
     }
 
