@@ -12,6 +12,9 @@ import java.util.List;
 @Repository
 public interface MenuItemRepository extends JpaRepository<MenuItem, Integer> {
 
+    // 0. Find MenuItem by itself only
+    Optional<MenuItem> findByMenuItemId(int menuItemId); 
+
     // 1. Find menu items by restaurant ID
     List<MenuItem> findByRestaurantId(int restaurantId);  // Spring Data JPA derives the query
 
