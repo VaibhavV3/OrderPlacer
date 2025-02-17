@@ -47,7 +47,7 @@ public class OrderService {
 
         // 1. Get all MenuItem IDs
         List<Integer> menuItemIds = order.getOrderItems().stream()
-                .map(orderItem -> orderItem.getMenuItem().getMenu_item_id())
+                .map(orderItem -> orderItem.getMenuItem().getMenuItemId())
                 .collect(Collectors.toList());
 
         // 2. Fetch all MenuItems in one query
@@ -55,7 +55,7 @@ public class OrderService {
 
         // 3. Create a map for fast lookup
         Map<Integer, MenuItem> menuItemMap = menuItems.stream()
-                .collect(Collectors.toMap(MenuItem::getMenu_item_id, Function.identity()));
+                .collect(Collectors.toMap(MenuItem::getMenuItemId, Function.identity()));
         
         // 4. Set the order date (if not already set by the client)
         if (order.getOrderDate() == null) {
@@ -66,9 +66,9 @@ public class OrderService {
         if (order.getOrderItems() != null) {
             for (OrderItem orderItem : order.getOrderItems()) {
                 orderItem.setOrder(order); // Set the order for each item
-                MenuItem menuItem = menuItemMap.get(orderItem.getMenuItem().getMenu_item_id());
+                MenuItem menuItem = menuItemMap.get(orderItem.getMenuItem().getMenuItemId());
                 if (menuItem == null) {
-                    throw new EntityNotFoundException("Menu Item "+ orderItem.getMenuItem().getMenu_item_id() +" not found");
+                    throw new EntityNotFoundException("Menu Item "+ orderItem.getMenuItem().getMenuItemId() +" not found");
                 }
                 orderItem.setPrice(menuItem.getPrice()); // Set the price from the fetched MenuItem
             }
