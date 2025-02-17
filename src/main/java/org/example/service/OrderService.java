@@ -9,6 +9,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.time.LocalDateTime;
 
+import jakarta.persistence.EntityNotFoundException;
+
 import org.example.repository.OrderRepository;
 import org.example.repository.RestaurantRepository;
 import org.example.repository.MenuItemRepository;
