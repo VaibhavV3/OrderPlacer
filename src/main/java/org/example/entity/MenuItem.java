@@ -10,8 +10,7 @@ public class MenuItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "menu_item_id", nullable = false)
-    private int menuItemId;
+    private int menu_item_id;
 
     @Column(name = "restaurant_id", nullable = false) // Foreign key
     private int restaurantId;
@@ -63,12 +62,12 @@ public class MenuItem {
 
 
     // Getters and setters for all fields
-    public int getMenuItemId() {
-        return menuItemId;
+    public int getMenu_item_id() {
+        return menu_item_id;
     }
 
-    public void setMenuItemId(int menuItemId) {
-        this.menuItemId = menuItemId;
+    public void setMenu_item_id(int menu_item_id) {
+        this.menu_item_id = menu_item_id;
     }
 
     public int getRestaurant_id() {
@@ -172,7 +171,7 @@ public class MenuItem {
     @Override
     public String toString() {
         return "MenuItem{" +
-                "menuItemId=" + menuItemId +
+                "menu_item_id=" + menu_item_id +
                 ", restaurantId=" + restaurantId +
                 ", itemName='" + itemName + '\'' +
                 // ... other fields
